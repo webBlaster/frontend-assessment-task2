@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import BarChart from "../components/barchart";
+import { API_KEY, HOST } from "../contants";
 
 const Home = () => {
   const [plotData, setPlotData] = useState({ year: [], count: [] });
@@ -11,9 +12,8 @@ const Home = () => {
           {
             method: "GET",
             headers: {
-              "x-rapidapi-host": "data-imdb1.p.rapidapi.com",
-              "x-rapidapi-key":
-                "0411d86825mshc6f8d0b7311f1cdp139c7fjsn7bd43fe1eddc",
+              "x-rapidapi-host": HOST,
+              "x-rapidapi-key": API_KEY,
             },
           }
         ).catch((err) => {
@@ -42,7 +42,6 @@ const Home = () => {
             countArray.push(value);
           });
 
-          console.log(yearArray, countArray);
           setPlotData({ year: yearArray, count: countArray });
         }
       }
